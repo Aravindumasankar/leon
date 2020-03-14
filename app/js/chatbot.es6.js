@@ -6,7 +6,6 @@ export default class Chatbot {
   constructor () {
     this.em = new EventEmitter()
     this.feed = document.querySelector('#feed')
-    this.typing = document.querySelector('#is-typing')
     this.noBubbleMessage = document.querySelector('#no-bubble')
     this.bubbles = localStorage.getItem('bubbles')
     this.parsedBubbles = JSON.parse(this.bubbles)

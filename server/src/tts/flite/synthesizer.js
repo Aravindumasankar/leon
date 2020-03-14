@@ -14,9 +14,9 @@ log.title('Flite Synthesizer')
 const synthesizer = { }
 
 synthesizer.conf = {
-  int_f0_target_mean: 115.0, // Intonation (85-180 Hz men; 165-255 Hz women)
-  f0_shift: 1.0, // Low or high
-  duration_stretch: 1.0, // Speed (lower = faster)
+  int_f0_target_mean: 220.0, // Intonation (85-180 Hz men; 165-255 Hz women)
+  f0_shift: 1, // Low or high
+  duration_stretch: 1, // Speed (lower = faster)
   int_f0_target_stddev: 15.0 // Pitch variability (lower = more flat)
 }
 
@@ -53,7 +53,8 @@ synthesizer.save = (speech, em, cb) => {
     '--setf', `f0_shift=${synthesizer.conf.f0_shift}`,
     '--setf', `duration_stretch=${synthesizer.conf.duration_stretch}`,
     '--setf', `int_f0_target_stddev=${synthesizer.conf.int_f0_target_stddev}`,
-    '-o', file
+    '-o', file,
+    '-voice', 'bin/flite/cmu_us_slt.flitevox'
   ])
 
   /* istanbul ignore next */

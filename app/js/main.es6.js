@@ -1,6 +1,7 @@
 'use strict'
 
 import request from 'superagent'
+import SiriWave from './siriwave'
 
 import Loader from './loader.es6'
 import Client from './client.es6'
@@ -16,6 +17,13 @@ const config = {
   max_blank_time: 1000 // Maximum time to consider a blank (ms)
 }
 const serverUrl = process.env.LEON_NODE_ENV === 'production' ? '' : `${config.server_host}:${config.server_port}`
+const siriWave = new SiriWave({
+  container: document.getElementById('siri-container'),
+  cover: true,
+  style: 'ios9',
+  height: 100
+})
+siriWave.start()
 
 document.addEventListener('DOMContentLoaded', () => {
   const loader = new Loader()
